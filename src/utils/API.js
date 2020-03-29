@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-//   getEmpProfiles: function() {
-//     return axios.get("https://dog.ceo/api/breeds/image/random");
+  getEmpProfiles: function(searchParam) {
+    return axios.get("http://faker.hook.io?property=" + searchParam);
   }
 };
