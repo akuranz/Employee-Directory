@@ -36,22 +36,10 @@ class Directory extends React.Component {
     });
   };
 
-  // handleFilter = () => {
-
-  // }
-
   async componentDidMount() {
     const url = `https://randomuser.me/api/?results=20&nat=us?inc=Abby`;
     let response = await axios.get(url);
     console.log(response.data);
-    // let search = response.data.results[0];
-    // this.setState({
-    //   imageUrl: search.picture.thumbnail,
-    //   name: search.name.first + " " + search.name.last,
-    //   phone: search.phone,
-    //   email: search.email,
-    //   dob: search.dob.date
-    // });
     const mappedRes = response.data.results.map(res => ({
       thumbnail: res.picture.thumbnail,
       lastName: res.name.last,
@@ -63,7 +51,7 @@ class Directory extends React.Component {
     this.setState({ ...this.state, results: mappedRes, filtered: mappedRes });
   }
 
-  sortBy = col => {
+  handleSort = col => {
     this.setState({
       filtered: this.state.filtered.sort((a, b) => {
         if (this.state.order === "DESC") {
@@ -91,13 +79,25 @@ class Directory extends React.Component {
           </div>
 
           <div className="row">
+            <div className="col"></div>
             <div className="col">
-              <button onClick={() => this.sortBy("firstName")}>
+              <button onClick={() => this.handleSort("firstName")}>
                 First Name
               </button>
             </div>
             <div className="col">
-              <button onClick={() => this.sortBy("lastName")}>Last Name</button>
+              <button onClick={() => this.handleSort("lastName")}>
+                Last Name
+              </button>
+            </div>
+            <div className="col">
+              <button onClick={() => this.handleSort("email")}>Email</button>
+            </div>
+            <div className="col">
+              <button onClick={() => this.handleSort("phone")}>Phone</button>
+            </div>
+            <div className="col">
+              <button onClick={() => this.handleSort("dob")}>DOB</button>
             </div>
           </div>
           <div className="row">
