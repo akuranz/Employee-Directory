@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export default {
-  getEmpProfiles: function(searchParam) {
-    return axios.get("http://faker.hook.io?property=" + searchParam);
-  }
+  getEmpProfiles: () =>
+    axios.get("https://randomuser.me/api/?results=20&nat=us?inc=Abby")
 };
