@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import DirectoryRow from "../components/DirectoryRow";
+import styled from "styled-components";
+
+const Button = styled.button`
+  color: white;
+  background-color: teal;
+  border: 1px solid #e4e4e4;
+  border-radius: 50px;
+  padding: 5px 25px 7px 25px;
+  margin-bottom: 25px;
+`;
 
 const Directory = () => {
   const [state, setState] = useState({
     headers: [
       {
-        name: "First Name",
-        val: "firstName"
+        name: "Image",
+        val: "image"
       },
       {
-        name: "Last Name",
-        val: "lastName"
+        name: "Name",
+        val: "firstName"
       },
       {
         name: "Email",
@@ -90,20 +100,21 @@ const Directory = () => {
             name="search"
             onChange={handleChange}
             value={state.search}
+            placeholder="Search"
           />
         </div>
 
-        <div className="row">
+        <div className="row justify-content-center">
           <div className="col"></div>
           {state.headers.map((header, i) => (
             <div className="col" key={i + "-header"}>
-              <button onClick={() => handleSort(header.val)}>
+              <Button onClick={() => handleSort(header.val)}>
                 {header.name}
-              </button>
+              </Button>
             </div>
           ))}
         </div>
-        <div className="row">
+        <div className="row d-flex justify-content-center">
           <div className="col">
             {state.filtered.map((profile, i) => (
               <DirectoryRow key={i + "-employee"} profile={profile} />

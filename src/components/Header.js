@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 const HeaderWrapper = styled.header`
-  color: black;
+  color: white;
   background-color: teal;
   margin-bottom: 25px;
   padding-bottom: 25px;
@@ -14,9 +14,14 @@ const HeaderWrapper = styled.header`
 const Header = () => {
   return (
     <HeaderWrapper>
-      <nav className="nav justify-content-center">
+      <div className="row justify-content-center">
         <h1>Employee Directory</h1>
-      </nav>
+      </div>
+      <div className="row justify-content-center">
+        <p>
+          Click on buttons to sort or use the search box to narrow your results.
+        </p>
+      </div>
     </HeaderWrapper>
   );
 };

@@ -2,5 +2,5 @@ import axios from "axios";
 
 export default {
   getEmpProfiles: () =>
-    axios.get("https://randomuser.me/api/?results=20&nat=us?inc=Abby")
+    axios.get("https://randomuser.me/api/?results=20&nat=us")
 };
