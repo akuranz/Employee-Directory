@@ -7,6 +7,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <Directory />
       <div className="container">
         <Switch>
           <Route exact path="/" component={Directory} />

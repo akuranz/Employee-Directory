@@ -17,67 +17,67 @@ const Directory = () => {
     headers: [
       {
         name: "Image",
-        val: "image"
+        val: "image",
       },
       {
         name: "Name",
-        val: "firstName"
+        val: "firstName",
       },
       {
         name: "Email",
-        val: "email"
+        val: "email",
       },
       {
         name: "Phone",
-        val: "phone"
+        val: "phone",
       },
       {
         name: "DoB",
-        val: "dob"
-      }
+        val: "dob",
+      },
     ],
     search: "",
     order: "DESC",
     results: [],
     filtered: [],
-    col: ""
+    col: "",
   });
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setState({
       ...state,
       search: e.target.value,
-      filtered: state.results.filter(emp => {
+      filtered: state.results.filter((emp) => {
         var vals = Object.values(emp) // [Object object]
           .toString()
           .toLowerCase();
 
         return vals.includes(e.target.value.toLowerCase());
-      })
+      }),
     });
   };
 
   useEffect(() => {
     const callAPI = async () => {
       let response = await API.getEmpProfiles();
-      const mappedRes = response.data.results.map(res => ({
+      const mappedRes = response.data.results.map((res) => ({
         thumbnail: res.picture.thumbnail,
         lastName: res.name.last,
         firstName: res.name.first,
         email: res.email,
         phone: res.phone,
-        dob: res.dob.date
+        dob: res.dob.date,
       }));
-      setState(state => ({
+      setState((state) => ({
         ...state,
         results: mappedRes,
-        filtered: mappedRes
+        filtered: mappedRes,
       }));
     };
     callAPI();
   }, []);
 
-  const handleSort = col => {
+  const handleSort = (col) => {
     setState({
       ...state,
       filtered: state.filtered.sort((a, b) => {
@@ -87,7 +87,7 @@ const Directory = () => {
           return a[col] < b[col] ? 1 : -1;
         }
       }),
-      order: state.order === "DESC" ? "ASC" : "DESC"
+      order: state.order === "DESC" ? "ASC" : "DESC",
     });
   };
 
